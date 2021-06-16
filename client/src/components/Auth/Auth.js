@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
 	Avatar,
 	Button,
@@ -20,6 +22,8 @@ const Auth = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [isSignup, setIsSignup] = useState(false);
 	// const isSignup = true;
+	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const handleSubmit = () => {};
 	const handleChange = () => {};
@@ -36,6 +40,9 @@ const Auth = () => {
 		const token = res?.tokenId;
 
 		try {
+			dispatch({ type: 'AUTH', data: { result, token } });
+
+			history.push('/');
 		} catch (error) {
 			console.log(error);
 		}
