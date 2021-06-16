@@ -3,6 +3,7 @@ import { Container, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
+import Navbar from './components/Navbar/Navbar';
 import useStyles from './styles';
 
 import { getPosts } from './actions/posts';
@@ -18,6 +19,7 @@ function App() {
 
 	return (
 		<Container maxWidth="lg">
+			<Navbar />
 			<Grow in>
 				<Container>
 					<Grid
