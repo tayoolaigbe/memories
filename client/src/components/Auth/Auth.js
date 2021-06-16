@@ -10,7 +10,7 @@ import {
 	Typography,
 	Paper,
 } from '@material-ui/core';
-import LockOutlineIcon from '@material-ui/icons/LockOutlined';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Icon from './icon';
 import useStyles from './styles';
 import Input from './Input';
@@ -56,9 +56,11 @@ const Auth = () => {
 		<Container component="main" maxWidth="xs">
 			<Paper className={classes.paper} elevation={3}>
 				<Avatar className={classes.avatar}>
-					<LockOutlineIcon />
+					<LockOutlinedIcon />
 				</Avatar>
-				<Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign in'}</Typography>
+				<Typography component="h1" variant="h5">
+					{isSignup ? 'Sign up' : 'Sign in'}
+				</Typography>
 				<form className={classes.form} onSubmit={handleSubmit}>
 					<Grid container spacing={2}>
 						{isSignup && (
@@ -83,7 +85,6 @@ const Auth = () => {
 							label="Email Address"
 							handleChange={handleChange}
 							type="email"
-							autoFocus
 						/>
 						<Input
 							name="password"
@@ -102,13 +103,13 @@ const Auth = () => {
 						)}
 					</Grid>
 					<Button
-						className={classes.submit}
 						type="submit"
 						fullWidth
 						variant="contained"
 						color="primary"
+						className={classes.submit}
 					>
-						{isSignup ? 'Sign Up' : 'Sign In '}
+						{isSignup ? 'Sign Up' : 'Sign In'}
 					</Button>
 					<GoogleLogin
 						clientId="437122358079-7qkoi6oatl7idphco9jko2ulun83ta2q.apps.googleusercontent.com"
@@ -129,11 +130,11 @@ const Auth = () => {
 						onFailure={googleFailure}
 						cookiePolicy="single_host_origin"
 					/>
-					<Grid type="container" justify="flex-end">
+					<Grid container justify="flex-end">
 						<Grid item>
 							<Button onClick={switchMode}>
 								{isSignup
-									? 'Already have an account? Sign In'
+									? 'Already have an account? Sign in'
 									: "Don't have an account? Sign Up"}
 							</Button>
 						</Grid>
