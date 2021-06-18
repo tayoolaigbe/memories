@@ -44,7 +44,7 @@ const Navbar = () => {
 				/>
 			</div>
 			<Toolbar className={classes.toolbar}>
-				{user ? (
+				{user?.result ? (
 					<div className={classes.profile}>
 						<Avatar
 							className={classes.purple}
