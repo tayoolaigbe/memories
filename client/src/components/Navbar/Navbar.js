@@ -13,11 +13,13 @@ const Navbar = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const location = useLocation();
+
 	const logout = () => {
 		dispatch({ type: 'LOGOUT' });
 		history.push('/');
 		setUser(null);
 	};
+
 	useEffect(() => {
 		const token = user?.token;
 
