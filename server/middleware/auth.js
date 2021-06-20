@@ -5,8 +5,8 @@ import jwt from 'jsonwebtoken';
 // router.patch('/:id/likePost', auth, likePost);
 
 const auth = async (req, res, next) => {
-	console.log('*******************');
-	console.log(req.headers);
+	// console.log('*******************');
+	// console.log(req.headers);
 
 	try {
 		const token = req.headers.authorization.split(' ')[1];
@@ -22,6 +22,7 @@ const auth = async (req, res, next) => {
 
 			req.userId = decodeData?.sub;
 		}
+		// console.log(decodeData);
 
 		next();
 	} catch (error) {
