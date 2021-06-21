@@ -30,7 +30,7 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
 	const { id } = req.params;
-	const { title, message, creator, selectedFile, tags } = req.body;
+	const { title, message, creator, name, likes, selectedFile, tags } = req.body;
 
 	if (!mongoose.Types.ObjectId.isValid(id))
 		return res.status(404).send(`No Post with that Id`);
@@ -39,7 +39,9 @@ export const updatePost = async (req, res) => {
 		const updatedPost = {
 			creator,
 			title,
+			name,
 			message,
+			likes,
 			tags,
 			selectedFile,
 			_id: id,
