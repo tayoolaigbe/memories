@@ -4,7 +4,7 @@ import PostMessage from '../models/postMessage.js';
 export const getPosts = async (req, res) => {
 	const {page} = req.query
 	try {
-		const LIMIT = 8
+		const LIMIT = 6
 		const startIndex = (Number(page) - 1) * LIMIT //get starting index of every pager
 		const total = await PostMessage.countDocuments({})
 
