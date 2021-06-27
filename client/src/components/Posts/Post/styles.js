@@ -43,6 +43,10 @@ export default makeStyles({
 	},
 	title: {
 		padding: '0 16px',
+		'&:hover': {
+			background: '#16a2e2',
+			cursor: 'pointer',
+		},
 	},
 	cardActions: {
 		padding: '0 16px 8px 16px',
