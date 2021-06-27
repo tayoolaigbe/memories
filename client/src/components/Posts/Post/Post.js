@@ -1,4 +1,5 @@
 import React from 'react';
+import './post.css';
 import {
 	Card,
 	CardActions,
@@ -94,7 +95,12 @@ const Post = ({ post, setCurrentId }) => {
 				{post.title}
 			</Typography>
 			<CardContent>
-				<Typography variant="body2" color="textSecondary" component="p">
+				<Typography
+					className="postDescription"
+					variant="body2"
+					color="textSecondary"
+					component="p"
+				>
 					{post.message}
 				</Typography>
 			</CardContent>

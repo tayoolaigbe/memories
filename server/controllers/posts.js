@@ -2,15 +2,24 @@ import mongoose from 'mongoose';
 import PostMessage from '../models/postMessage.js';
 
 export const getPosts = async (req, res) => {
-	const {page} = req.query
+	const { page } = req.query;
 	try {
-		const LIMIT = 6
-		const startIndex = (Number(page) - 1) * LIMIT //get starting index of every pager
-		const total = await PostMessage.countDocuments({})
+		const LIMIT = 6;
+		const startIndex = (Number(page) - 1) * LIMIT; //get starting index of every pager
+		const total = await PostMessage.countDocuments({});
 
-		const posts = await PostMessage.find().sort({ _id: -1}).limit(LIMIT).skip(startIndex)
+		const posts = await PostMessage.find()
+			.sort({ _id: -1 })
+			.limit(LIMIT)
+			.skip(startIndex);
 
-		res.status(200).json({data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total /LIMIT)});
+		res
+			.status(200)
+			.json({
+				data: posts,
+				currentPage: Number(page),
+				numberOfPages: Math.ceil(total / LIMIT),
+			});
 	} catch (error) {
 		res.status(404).json(error.message);
 	}
@@ -20,19 +29,20 @@ export const getPosts = async (req, res) => {
 // PARAMS => /posts/:id => post/123 => id = 123 params
 
 export const getPostsBySearch = async (req, res) => {
-	const {searchQuery, tags} = req.query
-
+	const { searchQuery, tags } = req.query;
 
 	try {
-		const title = new RegExp(searchQuery, 'i')
+		const title = new RegExp(searchQuery, 'i');
 
-		const posts = await PostMessage.find({ $or: [ { title }, { tags: { $in: tags.split(',')}}]})
+		const posts = await PostMessage.find({
+			$or: [{ title }, { tags: { $in: tags.split(',') } }],
+		});
 
-		res.json({data: posts})
+		res.json({ data: posts });
 	} catch (error) {
-		res.status(404).json({ message: error.message});
+		res.status(404).json({ message: error.message });
 	}
-}
+};
 
 export const createPost = async (req, res) => {
 	const post = req.body;
